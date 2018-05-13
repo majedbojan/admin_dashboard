@@ -10,7 +10,8 @@ class Login extends Component {
     this.state = {
       params: {
         email: '',
-        password: ''
+        password: '',
+        access: 'admin'
       },
       message: null,
       error: null,
@@ -24,8 +25,6 @@ class Login extends Component {
            this.state.parapassword.length > 0;
   }
 
-  // handleChange = (event) => {
-
   handleChange (event) {
     this.setState({ params:{
       ...this.state.params,
@@ -34,17 +33,15 @@ class Login extends Component {
     });
   }
 
-  // handleSubmit = (event) => {
   handleSubmit (event) {
     event.preventDefault();
   }
 
-  // onSubmit = (e) => {
   onSubmit (e) {
     e.preventDefault()
     this.setState({ message: null, error: null })
 
-    axios.post(`http://localhost:3000/v1/system_admin/login `, this.state.params)
+    axios.post(`http://localhost:3000/v1/login `, this.state.params)
     .then((response) => {
       this.setState({ message: response.data.message, token: response.data.data.token})
     })
@@ -56,13 +53,17 @@ class Login extends Component {
   render(){
     return(
       <div className="Login">
-        { this.state.message && <div className="alert alert-success" role="alert">
-          {this.state.message}
-        </div>}
+        {
+          this.state.message && <div className="alert alert-success" role="alert">
+            {this.state.message}
+          </div>
+        }
 
-        { this.state.error && <div className="alert alert-danger" role="alert">
-          {this.state.error}
-        </div>}
+        {
+          this.state.error && <div className="alert alert-danger" role="alert">
+            {this.state.error}
+          </div>
+        }
 
         <form onSubmit={this.handleSubmit}>
           <FormGroup controlId="email" bsSize="large">
