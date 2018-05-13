@@ -1,8 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {ReactDOM, render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import {HashRouter, Route, Switch} from 'react-router-dom';
+import configureStore from './store/configureStore';
 
 import rootReducer from './reducers/index'
 import Login       from './containers/Login/Login'
@@ -20,9 +21,11 @@ import '../scss/core/_dropdown-menu-right.scss'
 import App from './containers/App/';
 // import BookList from './containers/book_list/';
 
-const store = createStore(rootReducer);
+// const store = createStore(rootReducer);
+const store = configureStore();
 
-ReactDOM.render((
+// ReactDOM.render((
+render((
   // <Provider store={createStoreWithMiddleware(reducers)}>
    <Provider store={store}>
     <HashRouter>
