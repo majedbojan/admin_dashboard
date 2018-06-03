@@ -2,7 +2,7 @@ import React from 'react';
 import {ReactDOM, render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
-import {HashRouter, Route, Switch} from 'react-router-dom';
+import {HashRouter, Route, Switch, Redirect} from 'react-router-dom';
 import configureStore from './store/configureStore';
 
 import rootReducer from './reducers/index'
@@ -21,19 +21,28 @@ import '../scss/core/_dropdown-menu-right.scss'
 import App from './containers/App/';
 // import BookList from './containers/book_list/';
 
-// const store = createStore(rootReducer);
-const store = configureStore();
+const store = createStore(rootReducer);
+// const store = configureStore();
 
 // ReactDOM.render((
+
+const has_token = localStorage.getItem('token') ? true : false
+console.log('token', has_token)
+// console.log('token', localStorage.getItem('token'))
 render((
   // <Provider store={createStoreWithMiddleware(reducers)}>
-   <Provider store={store}>
+  // <Provider store={store}>
     <HashRouter>
-      <Switch>
-        <Route exact path="/login" name="Login Page" component={Login}/>
-        <Route path="/" name="Home" component={App}/>
-        {/* <Route path="books" name="Books" component={BookList}/> */}
-      </Switch>
+        { has_token
+          ? <Switch>
+            <Route path="/" name="Home" component={App}/>
+            <Redirect to="/" />
+          </Switch>
+          : <Switch>
+            <Route exact path="/login" name="Login Page" component={Login}/>
+            <Redirect to="/login" />
+          </Switch>
+        }
     </HashRouter>
-  </Provider>
+  // </Provider>
 ), document.getElementById('root'));

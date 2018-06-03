@@ -11,7 +11,7 @@ class Login extends Component {
       params: {
         email: '',
         password: '',
-        access: 'admin'
+        access: 'web'
       },
       message: null,
       error: null,
@@ -43,6 +43,7 @@ class Login extends Component {
 
     axios.post(`http://localhost:3000/v1/login `, this.state.params)
     .then((response) => {
+      localStorage.setItem('token', response.data.data.token)
       this.setState({ message: response.data.message, token: response.data.data.token})
     })
     .catch((error) => {
