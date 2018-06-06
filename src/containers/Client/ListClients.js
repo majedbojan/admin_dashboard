@@ -21,11 +21,11 @@ class ListClients extends Component {
       <table className="table table-sm table-light">
         <thead className="table-primary">
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Mobile</th>
-            <th scope="col">status</th>
+            <th scope="col">الرقم المعرف</th>
+            <th scope="col">الاسم</th>
+            <th scope="col">البريد الالكتروني</th>
+            <th scope="col">رقم الجوال</th>
+            <th scope="col">الحاله</th>
           </tr>
         </thead>
                {this.state.clients.map(function(client, index){
@@ -37,7 +37,7 @@ class ListClients extends Component {
                       <th>{client.email}</th>
                       <th>{client.mobile}</th>
                       <th>{client.status === "active" ? <a class="btn btn-success btn-sm" href="#" role="button">Active</a> :
-                                                           <a class="btn btn-danger btn-sm" href="#" role="button">Inactive</a>}</th>
+                                                        <a class="btn btn-danger btn-sm" href="#" role="button">Inactive</a>}</th>
                       {/* <th><Link to={`/clients/${client.id}`} activeClassName="special">Show</Link></th> */}
                     </tr>
                 </tbody>
