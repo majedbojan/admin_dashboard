@@ -44,6 +44,7 @@ class Login extends Component {
     axios.post(`http://localhost:3000/v1/login `, this.state.params)
     .then((response) => {
       localStorage.setItem('token', response.data.data.token)
+      this.props.history.go('/')
       this.setState({ message: response.data.message, token: response.data.data.token})
     })
     .catch((error) => {

@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom'
 
 class SidebarForm extends Component {
 
   render() {
-    return null
-    // Uncomment following code lines to add Sidebar Form
-    // return (
-    //   <div className="sidebar-form"></div>
-    // )
+    return(
+      <Link className="fa fa-users fa-lg" to="/clients">Clients</Link>
+    )
   }
 }
 

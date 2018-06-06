@@ -7,6 +7,7 @@ import configureStore from './store/configureStore';
 
 import rootReducer from './reducers/index'
 import Login       from './containers/Login/Login'
+import ListClients from './containers/Client/ListClients'
 // Styles
 // Import Font Awesome Icons Set
 import 'font-awesome/css/font-awesome.min.css';
@@ -27,22 +28,20 @@ const store = createStore(rootReducer);
 // ReactDOM.render((
 
 const has_token = localStorage.getItem('token') ? true : false
-console.log('token', has_token)
-// console.log('token', localStorage.getItem('token'))
 render((
   // <Provider store={createStoreWithMiddleware(reducers)}>
-  // <Provider store={store}>
-    <HashRouter>
-        { has_token
-          ? <Switch>
-            <Route path="/" name="Home" component={App}/>
-            <Redirect to="/" />
-          </Switch>
-          : <Switch>
-            <Route exact path="/login" name="Login Page" component={Login}/>
-            <Redirect to="/login" />
-          </Switch>
-        }
-    </HashRouter>
-  // </Provider>
+  <HashRouter>
+    { has_token
+      ? <Switch>
+        <Route path="/clients" component={ListClients} />
+        <Route path="/" name="Home" component={App}/>
+
+        {/* <Redirect to="/" /> */}
+      </Switch>
+      : <Switch>
+        <Route exact path="/login" name="Login Page" component={Login}/>
+        <Redirect to="/login" />
+      </Switch>
+    }
+  </HashRouter>
 ), document.getElementById('root'));
