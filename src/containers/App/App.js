@@ -8,6 +8,7 @@ import Aside from '../../components/Aside/';
 import Footer from '../../components/Footer/';
 
 import Dashboard from '../../views/Dashboard/';
+import ListClients from '../Client/ListClients';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Container fluid>
               <Switch>
                 <Route path="/dashboard" name="Dashboard" component={Dashboard}/>
+                <Route path="clients" name="Clients" component={ListClients}/>
                 <Redirect from="/" to="/dashboard"/>
               </Switch>
             </Container>

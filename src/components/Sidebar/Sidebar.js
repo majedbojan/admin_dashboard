@@ -7,6 +7,7 @@ import SidebarFooter from './../SidebarFooter';
 import SidebarForm from './../SidebarForm';
 import SidebarHeader from './../SidebarHeader';
 import SidebarMinimizer from './../SidebarMinimizer';
+import { Link } from 'react-router-dom'
 
 class Sidebar extends Component {
 
@@ -119,9 +120,16 @@ class Sidebar extends Component {
       <div className="sidebar">
         <SidebarHeader/>
         <SidebarForm/>
+
         <nav className="sidebar-nav">
           <Nav>
             {navList(nav.items)}
+            <br/>
+            <Link className="fa fa-users fa-lg" to="/clients">العمـلاء</Link>
+            <Link to="/providers">المزودين</Link>
+            <Link to="/categories">الفئات</Link>
+            <Link to="/services">الخدمات</Link>
+            <Link to="/requests">الطلبات</Link>
           </Nav>
         </nav>
         <SidebarFooter/>

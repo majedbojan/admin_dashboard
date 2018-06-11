@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // components
 import BookList   from '../../containers/Book/BookList'
 import BookDetail from '../../containers/Book/BookDetail'
+import ListClients   from '../../containers/Client/ListClients';
 
 class Dashboard extends Component {
 
@@ -10,7 +11,7 @@ class Dashboard extends Component {
     return (
       <div className="animated fadeIn">
         {/* تـجربه لقلم */}
-        {/* <BookList /> */}
+        {/* <ListClients /> */}
         {/* <BookDetail /> */}
       </div>
     )
